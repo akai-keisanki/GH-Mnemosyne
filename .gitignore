@@ -1,0 +1,9 @@
+*.exe
+
+tmp/*
+*.tmp.*
+
+__pycache__/
+env/
+
+!.gitignore
