@@ -5,9 +5,9 @@ from pybind11 import get_include
 
 setup(
     name = 'genhor',
-    ext_mpdules = [
+    ext_modules = [
         Extension(
-            'genhor', sorces = ['main.cpp'], language = 'c++',
+            'genhor', sources = ['main.cpp'], language = 'c++',
             include_dirs = [get_include()]
         )
     ]
