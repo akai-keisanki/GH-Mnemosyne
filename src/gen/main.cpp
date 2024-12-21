@@ -1,20 +1,41 @@
-#include <string>
+#include <unsigned>
 #include <vector>
 #include <tuple>
 #include <map>
+#include <cstdlib>
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
 
-std::map<std::string, std::vector<std::vector<std::tuple<std::string, std::string>>>> genhor (unsigned days, unsigned hor_pd, std::map<std::string, std::tuple<unsigned, std::vector<std::tuple<std::string, std::string>>, std::vector<std::tuple<unsigned, unsigned>>>> profs)
+std::map<std::unsigned, std::vector<std::vector<std::tuple<std::unsigned, std::unsigned>>>> makeGen(unsigned days, unsigned hor_pd, unsigned profn, unsigned discn, unsigned clasn, std::vector<std::tuple<unsigned, std::vector<std::tuple<std::unsigned, std::unsigned>>, std::vector<std::tuple<unsigned, unsigned>>>> profs)
+{
+  std::vector<std::vector<std::vector<std::tuple<std::unsigned, std::unsigned>>>> out;
+  out.resize(clasn);
+
+  for (unsigned c = 0; c < clasn)
+  {
+    out[c].resize(days);
+    for (unsigned d = 0; d < days; d ++)
+    {
+      out[c][d].resize(hor_pd);
+      for (unsigned h = 0; h < hor_pd; h ++)
+      {
+        std::get<0>(out[c][d][h]) = rand() % profn();
+        std::get<1>(out[c][d][h]) = rand() % discn();
+      }
+    }
+  }
+
+  return out;
+}
+
+
+std::map<std::unsigned, std::vector<std::vector<std::tuple<std::unsigned, std::unsigned>>>> genhor (unsigned days, unsigned hor_pd, unsigned profn, unsigned discn, unsigned clasn, std::vector<std::tuple<unsigned, std::vector<std::tuple<unsigned, unsigned>>, std::vector<std::tuple<unsigned, unsigned>>>> profs, unsigned n, signed long seed)
 {
   /* Função para execução da script de geração de horários. */
 
-  std::map<std::string, unsigned> disc;
-  std::map<std::string, unsigned> prof;
-
-  std::map<std::string, std::vector<std::vector<std::tuple<std::string, std::string>>>> out;
+  std::map<std::unsigned, std::vector<std::vector<std::tuple<std::unsigned, std::unsigned>>>> out;
 
   /*
   Rápida descrição das variáveis iniciais:
@@ -23,30 +44,39 @@ std::map<std::string, std::vector<std::vector<std::tuple<std::string, std::strin
 
   hor_pd : unsigned - Número de horas por dia
 
+  profn : unsigned - número de professores
+
+  discn : unsigned - número de disciplinas
+
+  clasn : unsigned - número de turmas
+
   profs : map - mapa de professores onde:
-    profs[professor : string] = (carga_horaria : unsigned, t_e_d : vector, indisp : vector) - onde:
-      t_e_d[i] = (turma : string, disciplina : string)
+    profs[professor : unsigned] = (carga_horaria : unsigned, t_e_d : vector, indisp : vector) - onde:
+      t_e_d[i] = (turma : unsigned, disciplina : unsigned)
       indisp[i] = (dia_indisp : unsigned, hora_indisp : unsigned)
 
-  disc : map - mapa de disciplinas onde:
-    disc[disciplina : string] = frequencia de alocacao : unsigned
+  n : unsigned - número de gerações
 
-  prof : map - mapa de professores onde:
-    prof[professor : string] = frequencia de alocacao : unsigned
+  seed : signed long - seed das gerações
 
   out : map - mapa de turmas x horarios onde:
-    out[turma : string] = horario : vector - um horario, vetor de dias onde:
+    out[turma : unsigned] = horario : vector - um horario, vetor de dias onde:
       horario[i] = dia : vector - um dia, vetor de horarios onde:
-        dia[i] = (professor : string, disciplina : string)
+        dia[i] = (professor : unsigned, disciplina : unsigned)
   */
 
   /*
   Ideia do algoritmo:
 
-  - [ ] Percorrer os horários de aula
-    - [ ] Criar uma função para determinar a melhor escola para um horário de aula específico
-    - [ ] Alocar horários determinados e alterar dados existentes.
-  - [ ] Fazer um controle de qualidade de horário, refazendo se preciso.
+  - [ ] Criar genomas
+    - [ ] Sempre criar genomas aleatórios válidos
+  - [ ] Criar critérios de fitness
+    - [ ] Punições para invalidades
+    - [ ] Punições e promoções de equilíbrio
+    - [ ] Promoções com base em pesquisa
+    - [ ] ajustar parâmetros e taxas
+  - [ ] Criar geração principal e testes
+    - [ ] .
   */
 
   return out;
