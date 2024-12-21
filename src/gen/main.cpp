@@ -1,14 +1,13 @@
 #include <unsigned>
 #include <vector>
 #include <tuple>
-#include <map>
 #include <cstdlib>
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
 
-std::map<std::unsigned, std::vector<std::vector<std::tuple<std::unsigned, std::unsigned>>>> makeGen(unsigned days, unsigned hor_pd, unsigned profn, unsigned discn, unsigned clasn, std::vector<std::tuple<unsigned, std::vector<std::tuple<std::unsigned, std::unsigned>>, std::vector<std::tuple<unsigned, unsigned>>>> profs)
+std::vector<std::vector<std::vector<std::tuple<std::unsigned, std::unsigned>>>> makeGen(unsigned days, unsigned hor_pd, unsigned profn, unsigned discn, unsigned clasn, std::vector<std::tuple<unsigned, std::vector<std::tuple<std::unsigned, std::unsigned>>, std::vector<std::tuple<unsigned, unsigned>>>> profs)
 {
   std::vector<std::vector<std::vector<std::tuple<std::unsigned, std::unsigned>>>> out;
   out.resize(clasn);
@@ -31,11 +30,21 @@ std::map<std::unsigned, std::vector<std::vector<std::tuple<std::unsigned, std::u
 }
 
 
+signed long gen_fit (std::vector<std::vector<std::vector<std::tuple<std::unsigned, std::unsigned>>>> gen)
+{
+  signed long fit = 0;
+
+  // ...
+
+  return fit;
+}
+
+
 std::map<std::unsigned, std::vector<std::vector<std::tuple<std::unsigned, std::unsigned>>>> genhor (unsigned days, unsigned hor_pd, unsigned profn, unsigned discn, unsigned clasn, std::vector<std::tuple<unsigned, std::vector<std::tuple<unsigned, unsigned>>, std::vector<std::tuple<unsigned, unsigned>>>> profs, unsigned n, signed long seed)
 {
   /* Função para execução da script de geração de horários. */
 
-  std::map<std::unsigned, std::vector<std::vector<std::tuple<std::unsigned, std::unsigned>>>> out;
+  std::vector<std::vector<std::vector<std::tuple<std::unsigned, std::unsigned>>>> out;
 
   /*
   Rápida descrição das variáveis iniciais:
