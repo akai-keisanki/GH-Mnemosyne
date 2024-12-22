@@ -7,10 +7,13 @@
 #include <pybind11/stl.h>
 
 
-std::vector<std::vector<std::vector<std::tuple<std::unsigned, std::unsigned>>>> makeGen(unsigned days, unsigned hor_pd, unsigned profn, unsigned discn, unsigned clasn, std::vector<std::tuple<unsigned, std::vector<std::tuple<std::unsigned, std::unsigned>>, std::vector<std::tuple<unsigned, unsigned>>>> profs)
+std::vector<std::vector<std::vector<std::tuple<unsigned, unsigned>>>> makeGen(unsigned days, unsigned hor_pd, unsigned profn, unsigned discn, unsigned clasn, std::vector<std::tuple<unsigned, std::vector<std::tuple<unsigned, unsigned>>, std::vector<std::tuple<unsigned, unsigned>>>> profs)
 {
-  std::vector<std::vector<std::vector<std::tuple<std::unsigned, std::unsigned>>>> out;
+  std::vector<std::vector<std::vector<std::tuple<unsigned, unsigned>>>> out;
   out.resize(clasn);
+
+  std::vector<std::tuple<unsigned, unsigned>> pd;
+  std::tuple<unsigned, unsigned> ptd;
 
   for (unsigned c = 0; c < clasn)
   {
@@ -20,8 +23,17 @@ std::vector<std::vector<std::vector<std::tuple<std::unsigned, std::unsigned>>>> 
       out[c][d].resize(hor_pd);
       for (unsigned h = 0; h < hor_pd; h ++)
       {
-        std::get<0>(out[c][d][h]) = rand() % profn();
-        std::get<1>(out[c][d][h]) = rand() % discn();
+        while (true)
+        {
+          std::get<0>(out[c][d][h]) = rand() % profn;
+          pd = std::get<1>(profs[std::get<0>(out[c][d][h])]);
+          ptd = pd[rand() % pd.size()]
+          if (std::get<0>(td) == c)
+          {
+            std::get<1>(out[c][d][h]) = std::get<1>(td);
+            break;
+          }
+        }
       }
     }
   }
@@ -30,7 +42,7 @@ std::vector<std::vector<std::vector<std::tuple<std::unsigned, std::unsigned>>>> 
 }
 
 
-signed long gen_fit (std::vector<std::vector<std::vector<std::tuple<std::unsigned, std::unsigned>>>> gen)
+signed long gen_fit (std::vector<std::vector<std::vector<std::tuple<unsigned, unsigned>>>> gen)
 {
   signed long fit = 0;
 
@@ -40,11 +52,13 @@ signed long gen_fit (std::vector<std::vector<std::vector<std::tuple<std::unsigne
 }
 
 
-std::map<std::unsigned, std::vector<std::vector<std::tuple<std::unsigned, std::unsigned>>>> genhor (unsigned days, unsigned hor_pd, unsigned profn, unsigned discn, unsigned clasn, std::vector<std::tuple<unsigned, std::vector<std::tuple<unsigned, unsigned>>, std::vector<std::tuple<unsigned, unsigned>>>> profs, unsigned n, signed long seed)
+std::map<unsigned, std::vector<std::vector<std::tuple<unsigned, unsigned>>>> genhor (unsigned days, unsigned hor_pd, unsigned profn, unsigned discn, unsigned clasn, std::vector<std::tuple<unsigned, std::vector<std::tuple<unsigned, unsigned>>, std::vector<std::tuple<unsigned, unsigned>>>> profs, signed long seed, unsigned genn = 128, unsigned popn = 100)
 {
   /* Função para execução da script de geração de horários. */
 
-  std::vector<std::vector<std::vector<std::tuple<std::unsigned, std::unsigned>>>> out;
+  std::vector<std::vector<std::vector<std::vector<std::tuple<unsigned, unsigned>>>>> pop(popn);
+
+  srand(seed); srand(rand());
 
   /*
   Rápida descrição das variáveis iniciais:
@@ -77,7 +91,7 @@ std::map<std::unsigned, std::vector<std::vector<std::tuple<std::unsigned, std::u
   /*
   Ideia do algoritmo:
 
-  - [ ] Criar genomas
+  - [x] Criar genomas
     - [ ] Sempre criar genomas aleatórios válidos
   - [ ] Criar critérios de fitness
     - [ ] Punições para invalidades
@@ -85,10 +99,23 @@ std::map<std::unsigned, std::vector<std::vector<std::tuple<std::unsigned, std::u
     - [ ] Promoções com base em pesquisa
     - [ ] ajustar parâmetros e taxas
   - [ ] Criar geração principal e testes
-    - [ ] .
+    - [ ] Geração principal
+    - [ ] Loop de gerações
+    - [ ] Sistema de seleção
   */
 
-  return out;
+  for (std::vector<std::vector<std::vector<std::tuple<unsigned, unsigned>>>>& gen : pop)
+    gen = makeGen(days, hor_pd, profn, discn, clasn, profs);
+
+  for (unsigned g = 0; g < genn; g ++)
+  {
+    std::vector<std::vector<std::vector<std::vector<std::tuple<unsigned, unsigned>>>>> pop(popn);
+    ...
+  }
+
+  // ...
+
+  return pop;
 }
 
 
