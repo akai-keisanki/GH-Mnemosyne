@@ -2,6 +2,7 @@
 #include <vector>
 #include <tuple>
 #include <cstdlib>
+#include <cmath>
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
@@ -42,7 +43,7 @@ std::vector<std::vector<std::vector<std::tuple<unsigned, unsigned>>>> makeGen(un
 }
 
 
-signed long gen_fit (std::vector<std::vector<std::vector<std::tuple<unsigned, unsigned>>>> gen)
+signed long genFit (std::vector<std::vector<std::vector<std::tuple<unsigned, unsigned>>>> gen)
 {
   signed long fit = 0;
 
@@ -106,11 +107,12 @@ std::map<unsigned, std::vector<std::vector<std::tuple<unsigned, unsigned>>>> gen
 
   for (std::vector<std::vector<std::vector<std::tuple<unsigned, unsigned>>>>& gen : pop)
     gen = makeGen(days, hor_pd, profn, discn, clasn, profs);
-
+  
   for (unsigned g = 0; g < genn; g ++)
   {
-    std::vector<std::vector<std::vector<std::vector<std::tuple<unsigned, unsigned>>>>> pop(popn);
-    ...
+    std::sort(pop.begin(), pop.end(), [](auto g1, auto g2){return gen_fit(g1) > gen_fit(g2);});
+    pop.resize((unsigned) sqrt(popn));
+    // ...
   }
 
   // ...
