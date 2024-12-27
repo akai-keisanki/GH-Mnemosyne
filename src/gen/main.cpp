@@ -19,7 +19,7 @@ private:
 
 public:
 
-  genclass (unsigned days, unsigned hor_pd, unsigned profn, unsigned discn, unsigned clasn, std::vector<std::tuple<unsigned, std::vector<std::vector<unsigned>>, std::vector<std::tuple<unsigned, unsigned>>>> profs, signed long seed, unsigned genn, unsigned popn, unsigned mutp)
+  GenClass (unsigned days, unsigned hor_pd, unsigned profn, unsigned discn, unsigned clasn, std::vector<std::tuple<unsigned, std::vector<std::vector<unsigned>>, std::vector<std::tuple<unsigned, unsigned>>>> profs, signed long seed, unsigned genn, unsigned popn, unsigned mutp)
   : days(days), hor_pd(hor_pd), profn(profn), discn(discn), clasn(clasn), profs(profs.begin(), profs.end()), seed(seed), genn(genn), popn(popn), mutp(mutp)
   {
     srand(seed); srand(rand());
@@ -36,7 +36,7 @@ public:
     for (unsigned c = 0; c < clasn)
       for (unsigned d = 0; d < days; d ++)
         for (unsigned h = 0; h < hor_pd; h ++)
-          while (true)
+          while (true) // procurando professor com uma ou mais matérias na classe
           {
             std::get<0>(out[days*hor_pd*c + hor_pd*d + h]) = rand() % profn;
             pd = std::get<1>(profs[std::get<0>(out[days*hor_pd*c + hor_pd*d + h])])[c];
@@ -56,6 +56,10 @@ public:
     signed long fit = 0;
 
     /*
+      WIP
+
+    TODO: DO
+      
     checks
 
     - [ ] conflito de professores
@@ -68,13 +72,13 @@ public:
   }
 
 
-  signed deltaFit (const std::vector<std::tuple<unsigned, unsigned>>>>& gen1, const std::vector<std::tuple<unsigned, unsigned>>>>& gen2)
+  bool deltaFit (const std::vector<std::tuple<unsigned, unsigned>>>>& gen1, const std::vector<std::tuple<unsigned, unsigned>>>>& gen2)
   {
-    return gnmFit(gen1) - gnmFit(gen2);
+    return gnmFit(gen1) > gnmFit(gen2);
   }
 
 
-  signed long genCrs (const std::vector<std::tuple<unsigned, unsigned>>& gen1, const std::vector<std::tuple<unsigned, unsigned>>& gen2)
+  std::vector<std::tuple<unsigned, unsigned>> genCrs (const std::vector<std::tuple<unsigned, unsigned>>& gen1, const std::vector<std::tuple<unsigned, unsigned>>& gen2)
   {
     std::vector<std::tuple<unsigned, unsigned>> gen3(gen1.size());
     
@@ -82,7 +86,7 @@ public:
     for (unsigned long i = 0; i < gen3.size(); i ++)
     {
       if (rand() % 100 < mutp)
-	while (true)
+	while (true) // adicionando um professor uma ou mais matérias na classe
         {
           std::get<0>(g3[i]) = rand() % profn;
           pd = std::get<1>(profs[std::get<0>(gen3[i])])[floor(i/hor_pd/days)];
@@ -105,16 +109,23 @@ public:
   {
     pop.resize(popn);
     
-    for (std::vector<std::vector<std::vector<std::tuple<unsigned, unsigned>>>>& gen : pop)
+    for (std::vector<std::tuple<unsigned, unsigned>>& gen : pop)
       gen = makeGen();
     
     for (unsigned g = 0; g < genn; g ++)
     {
       for (unsigned i = 0; i < popn; i ++)
 	pop.push_back(genCrs(pop[rand() % popn], pop[rand() % popn]));
+      
       std::sort(pop.begin(), pop.end(), deltaFit);
       pop.resize(popn);
     }
+  }
+
+  
+  std::vector<std::vector<std::tuple<unsigned, unsigned>>> getPop()
+  {
+    return pop;
   }
 };
 
