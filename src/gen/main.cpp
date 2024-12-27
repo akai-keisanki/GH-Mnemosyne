@@ -7,117 +7,134 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-
-std::vector<std::vector<std::vector<std::tuple<unsigned, unsigned>>>> makeGen(unsigned days, unsigned hor_pd, unsigned profn, unsigned discn, unsigned clasn, std::vector<std::tuple<unsigned, std::vector<std::tuple<unsigned, unsigned>>, std::vector<std::tuple<unsigned, unsigned>>>> profs)
+class GenClass
 {
-  std::vector<std::vector<std::vector<std::tuple<unsigned, unsigned>>>> out;
-  out.resize(clasn);
+private:
 
-  std::vector<std::tuple<unsigned, unsigned>> pd;
-  std::tuple<unsigned, unsigned> ptd;
+  unsigned days, hor_pd, profn, discn, clasn, genn, popn, mutp;
+  signed long seed;
+  std::vector<std::tuple<unsigned, std::vector<std::vector<unsigned>>, std::vector<std::tuple<unsigned, unsigned>>>> profs;
 
-  for (unsigned c = 0; c < clasn)
+  std::vector<std::vector<std::tuple<unsigned, unsigned>>> pop;
+
+public:
+
+  genclass (unsigned days, unsigned hor_pd, unsigned profn, unsigned discn, unsigned clasn, std::vector<std::tuple<unsigned, std::vector<std::vector<unsigned>>, std::vector<std::tuple<unsigned, unsigned>>>> profs, signed long seed, unsigned genn, unsigned popn, unsigned mutp)
+  : days(days), hor_pd(hor_pd), profn(profn), discn(discn), clasn(clasn), profs(profs.begin(), profs.end()), seed(seed), genn(genn), popn(popn), mutp(mutp)
   {
-    out[c].resize(days);
-    for (unsigned d = 0; d < days; d ++)
-    {
-      out[c][d].resize(hor_pd);
-      for (unsigned h = 0; h < hor_pd; h ++)
-      {
-        while (true)
-        {
-          std::get<0>(out[c][d][h]) = rand() % profn;
-          pd = std::get<1>(profs[std::get<0>(out[c][d][h])]);
-          ptd = pd[rand() % pd.size()]
-          if (std::get<0>(td) == c)
+    srand(seed); srand(rand());
+  }
+
+
+  std::vector<std::tuple<unsigned, unsigned>> makeGen()
+  {
+    std::vector<std::tuple<unsigned, unsigned>> out;
+    out.resize(clasn*days*hor_pd);
+
+    std::vector<std::tuple<unsigned, unsigned>> pd;
+
+    for (unsigned c = 0; c < clasn)
+      for (unsigned d = 0; d < days; d ++)
+        for (unsigned h = 0; h < hor_pd; h ++)
+          while (true)
           {
-            std::get<1>(out[c][d][h]) = std::get<1>(td);
+            std::get<0>(out[days*hor_pd*c + hor_pd*d + h]) = rand() % profn;
+            pd = std::get<1>(profs[std::get<0>(out[days*hor_pd*c + hor_pd*d + h])])[c];
+            if (!pd.empty())
+            {
+              std::get<1>(out[days*hor_pd*c + hor_pd*d + h]) = pd[rand() % pd.size()];
+              break;
+            }
+          }
+
+    return out;
+  } 
+
+
+  signed long gnmFit (const std::vector<std::tuple<unsigned, unsigned>>>>& gen)
+  {
+    signed long fit = 0;
+
+    /*
+    checks
+
+    - [ ] conflito de professores
+    - [ ] descumprimentos de cargas
+    - [ ] desequilibrio de cargas
+    - [ ] horários indisponíveis
+    */
+
+    return fit;
+  }
+
+
+  signed deltaFit (const std::vector<std::tuple<unsigned, unsigned>>>>& gen1, const std::vector<std::tuple<unsigned, unsigned>>>>& gen2)
+  {
+    return gnmFit(gen1) - gnmFit(gen2);
+  }
+
+
+  signed long genCrs (const std::vector<std::tuple<unsigned, unsigned>>& gen1, const std::vector<std::tuple<unsigned, unsigned>>& gen2)
+  {
+    std::vector<std::tuple<unsigned, unsigned>> gen3(gen1.size());
+    
+
+    for (unsigned long i = 0; i < gen3.size(); i ++)
+    {
+      if (rand() % 100 < mutp)
+	while (true)
+        {
+          std::get<0>(g3[i]) = rand() % profn;
+          pd = std::get<1>(profs[std::get<0>(gen3[i])])[floor(i/hor_pd/days)];
+          if (!pd.empty())
+          {
+            std::get<1>(gen3[i]) = pd[rand() % pd.size()];
             break;
           }
         }
-      }
+      else
+	gen3[i] = (rand() % 2 == 1) ? gen1[i] : gen2[i];
+    }
+    
+
+    return gen3;
+  }
+
+
+  void genLoop()
+  {
+    pop.resize(popn);
+    
+    for (std::vector<std::vector<std::vector<std::tuple<unsigned, unsigned>>>>& gen : pop)
+      gen = makeGen();
+    
+    for (unsigned g = 0; g < genn; g ++)
+    {
+      for (unsigned i = 0; i < popn; i ++)
+	pop.push_back(genCrs(pop[rand() % popn], pop[rand() % popn]));
+      std::sort(pop.begin(), pop.end(), deltaFit);
+      pop.resize(popn);
     }
   }
-
-  return out;
-}
+};
 
 
-signed long genFit (std::vector<std::vector<std::vector<std::tuple<unsigned, unsigned>>>> gen)
+std::vector<std::vector<std::tuple<unsigned, unsigned>>> genhor (unsigned days, unsigned hor_pd, unsigned profn, unsigned discn, unsigned clasn, std::vector<std::tuple<unsigned, std::vector<std::vector<unsigned>>, std::vector<std::tuple<unsigned, unsigned>>>> profs, signed long seed, unsigned genn = 128, unsigned popn = 100, unsigned mutp = 5)
 {
-  signed long fit = 0;
+  /* Função para execução da script de geração de horários.
+   *
+   * Observações
+   * -----------
+   * Fornecer uma mesma seed pode levar a resultados idênticos
+   * por causa do uso da função rand() do header <cstdlib>,
+   * incluso no G++, GCC.
+   */
 
-  // ...
+  GenClass gc(days, hor_pd, profn, discn, profs, seed, genn, popn, mutp);
 
-  return fit;
-}
+  gc.genLoop();
 
-
-std::map<unsigned, std::vector<std::vector<std::tuple<unsigned, unsigned>>>> genhor (unsigned days, unsigned hor_pd, unsigned profn, unsigned discn, unsigned clasn, std::vector<std::tuple<unsigned, std::vector<std::tuple<unsigned, unsigned>>, std::vector<std::tuple<unsigned, unsigned>>>> profs, signed long seed, unsigned genn = 128, unsigned popn = 100)
-{
-  /* Função para execução da script de geração de horários. */
-
-  std::vector<std::vector<std::vector<std::vector<std::tuple<unsigned, unsigned>>>>> pop(popn);
-
-  srand(seed); srand(rand());
-
-  /*
-  Rápida descrição das variáveis iniciais:
-
-  days : unsigned - Número de dias por tabela
-
-  hor_pd : unsigned - Número de horas por dia
-
-  profn : unsigned - número de professores
-
-  discn : unsigned - número de disciplinas
-
-  clasn : unsigned - número de turmas
-
-  profs : map - mapa de professores onde:
-    profs[professor : unsigned] = (carga_horaria : unsigned, t_e_d : vector, indisp : vector) - onde:
-      t_e_d[i] = (turma : unsigned, disciplina : unsigned)
-      indisp[i] = (dia_indisp : unsigned, hora_indisp : unsigned)
-
-  n : unsigned - número de gerações
-
-  seed : signed long - seed das gerações
-
-  out : map - mapa de turmas x horarios onde:
-    out[turma : unsigned] = horario : vector - um horario, vetor de dias onde:
-      horario[i] = dia : vector - um dia, vetor de horarios onde:
-        dia[i] = (professor : unsigned, disciplina : unsigned)
-  */
-
-  /*
-  Ideia do algoritmo:
-
-  - [x] Criar genomas
-    - [ ] Sempre criar genomas aleatórios válidos
-  - [ ] Criar critérios de fitness
-    - [ ] Punições para invalidades
-    - [ ] Punições e promoções de equilíbrio
-    - [ ] Promoções com base em pesquisa
-    - [ ] ajustar parâmetros e taxas
-  - [ ] Criar geração principal e testes
-    - [ ] Geração principal
-    - [ ] Loop de gerações
-    - [ ] Sistema de seleção
-  */
-
-  for (std::vector<std::vector<std::vector<std::tuple<unsigned, unsigned>>>>& gen : pop)
-    gen = makeGen(days, hor_pd, profn, discn, clasn, profs);
-  
-  for (unsigned g = 0; g < genn; g ++)
-  {
-    std::sort(pop.begin(), pop.end(), [](auto g1, auto g2){return gen_fit(g1) > gen_fit(g2);});
-    pop.resize((unsigned) sqrt(popn));
-    // ...
-  }
-
-  // ...
-
-  return pop;
+  return gc.getPop();
 }
 
 
@@ -125,3 +142,4 @@ PYBIND11_MODULE(genhor, m)
 {
   m.def("genhor", &genhor, "Função para execução da script de geração de horários.");
 }
+
