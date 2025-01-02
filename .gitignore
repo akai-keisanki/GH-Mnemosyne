@@ -1,4 +1,4 @@
-*.exe
+_*.exe
 
 tmp/*
 *.tmp.*
