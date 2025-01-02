@@ -11,6 +11,8 @@
 
   <link rel = 'icon' type = 'image/png' href = '{{url_for("static", filename="images/logo.png")}}'>
 
+  <link rel = 'stylesheet' href = '{{url_for("static", filename="styles/nav.css")}}'>
+  <link rel = 'stylesheet' href = '{{url_for("static", filename="styles/colors.css")}}'>
   <link rel = 'stylesheet' href = '{{url_for("static", filename="styles/general.css")}}'>
   <link rel = 'stylesheet' href = '{{url_for("static", filename="styles/start.css")}}'>
 
@@ -18,15 +20,29 @@
 
 <body>
 
-  <div class = 'navbar'>
+  <div class = 'navbar row jus_x cen_y'>
 
-    <div class = 'navctt'>
-      <img src = '{{url_for("static", filename="images/logo.png")}}'>
+    <div class = 'navctt row cen_y'>
+      <img src = '{{url_for("static", filename="images/logo.png")}}' class = 'navimg navel'>
+      <p class = 'navtitle navel'> MNEMOSYNE </p>
     </div>
 
-    <div class = 'navctt'>
+    <div class = 'navctt row cen_y'>
+      <button class = 'navbt navel'><a href='/start'> Start </a></button>
+      <button class = 'navbt navel'><a href='/gen/form'> Generate </a></button>
     </div>
 
+  </div>
+
+  <div class = 'navspace'></div>
+
+  <div class = 'box col'>
+    <h1 class = 'title boxtitle'>
+      Welcome!
+    </h1>
+    <p class = 'par boxpar'>
+      Mnemosyne is an open source school timetable generator API and web interface programmed in C++.
+    </p>
   </div>
   
 </body>

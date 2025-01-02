@@ -11,7 +11,7 @@ class Mne:
         return
 
 
-    def setPages(self) -> None:
+    def setRoutes(self) -> None:
 
         @self.app.route('/')
         def index():
@@ -23,7 +23,7 @@ class Mne:
             Introductory page.
             """
 
-            return 'start page'
+            return flask.render_template('start.html')
 
         @self.app.route('/return')
         def ret():

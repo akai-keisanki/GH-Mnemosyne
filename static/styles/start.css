@@ -1,4 +1,43 @@
 html
 {
-  background-color: var(--b3);
+  background-image: linear-gradient(var(--b3), var(--b4));
+  background-attachment: fixed;
+}
+
+/* miscelaneous  */
+
+.box
+{
+  background-color: var(--b1);
+  border: solid 0.5vh var(--b2);
+  border-radius: 3vh 0;
+  padding: 1vh 3vh;
+  margin: 5vh 10vh;
+  box-shadow: 0 3vh 15vh var(--f1) inset, 0 1vh 10vh var(--b3);
+}
+
+/* titles */
+
+.title
+{
+  color: var(--f3);
+}
+
+.boxtitle
+{
+  font-size: 5vh;
+  margin: 2vh;
+}
+
+/* paragraphs */
+
+.par
+{
+  color: var(--f3);
+  font-size: 3vh;
+}
+
+.boxpar
+{
+  margin: 2vh;
 }

@@ -10,6 +10,12 @@ a, button
   all: unset;
 }
 
+*, a, button
+{
+  transition: 1s ease;
+  font-family: times, serif;
+  letter-spacing: 7%;
+}
 
 /* flex */
 
