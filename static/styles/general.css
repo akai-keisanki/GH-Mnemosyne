@@ -1,0 +1,97 @@
+/* general */
+
+html, body
+{
+  margin: 0;
+}
+
+a, button, input
+{
+  all: unset;
+}
+
+*, a, button, input
+{
+  transition: 1s ease;
+  font-family: times, serif;
+  letter-spacing: 7%;
+}
+
+/* miscelaneous */
+
+.houndred_x
+{
+  width: 100%;
+}
+
+.houndred_y
+{
+  height: 100%;
+}
+
+/* flex */
+
+.row, .col
+{
+  display : flex;
+}
+
+/* direction */
+
+.row
+{
+  flex-direction : row;
+}
+
+.col
+{
+  flex-direction: column;
+}
+
+/* alignment */
+
+.cen_x
+{
+  justify-content: center;
+}
+
+.cen_y
+{
+  align-items: center;
+}
+
+.beg_x
+{
+  justify-content: flex-start;
+}
+
+.beg_y
+{
+  align-items: flex-start;
+}
+
+.end_x
+{
+  justify-content: flex-end;
+}
+
+.end_y
+{
+  align-items: flex-end;
+}
+
+.jus_x
+{
+  justify-content: space-evenly;
+}
+
+.jus_y
+{
+  align-items: stretch;
+}
+
+.div_x
+{
+  justify-content: space-between;
+}
+

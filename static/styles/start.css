@@ -1,0 +1,131 @@
+html
+{
+  background-image: linear-gradient(var(--b3), var(--b4));
+  background-attachment: fixed;
+}
+
+/* miscelaneous  */
+
+.box
+{
+  background-color: var(--b1);
+  border: solid 0.5vh var(--b2);
+  border-radius: 3vh 0;
+  padding: 1vh 3vh;
+  margin: 5vh 10vh;
+  box-shadow: 0 3vh 15vh var(--f1) inset, 0 1vh 10vh var(--b3);
+  perspective: 100vh;
+}
+
+.space
+{
+  height: 2vh;
+  width: 2vw;
+}
+
+.cell
+{
+  box-shadow: 0 0.2vh 1vh #00000050, 0 0 0 #00000000 inset;
+  height: 3vh;
+  font-size: 3vh;
+  color: var(--f3);
+  padding: 2vh;
+  margin: 0;
+  width: 100%;
+}
+.cell:hover
+{
+  text-shadow: 0 0 1vh var(--f2);
+  box-shadow: 0 0 1vh var(--f2), 0 0 3vh var(--f2) inset;
+}
+
+.norcell
+{
+  background-image: linear-gradient(var(--b1), var(--b2));
+  border: solid var(--b1) 0.333vh;
+}
+
+.spcell
+{
+  background-image: linear-gradient(var(--f1), var(--b1));
+  border: solid var(--f1) 0.333vh;
+}
+
+/* titles */
+
+.title
+{
+  color: var(--f3);
+}
+
+.boxtitle
+{
+  font-size: 5vh;
+  margin: 2vh;
+}
+
+/* paragraphs */
+
+.par
+{
+  color: var(--f3);
+  font-size: 3vh;
+}
+
+.boxpar
+{
+  margin: 2vh;
+}
+
+.labpar
+{
+  margin: 2vh;
+  margin-bottom: 0;
+}
+
+/* interactibles */
+
+/* buttons */
+
+.bt
+{
+  background-image: linear-gradient(var(--f2), var(--f1));
+  box-shadow: 0 0.2vh 1vh #00000050, 0 0 0 #00000000 inset;
+  color: var(--f3);
+  font-size: 2.25vh;
+  height: 3vh;
+  padding: 1vh 2vh;
+  border-radius: 1vh 0;
+  text-align: center;
+  margin: 1vh;
+}
+.bt:hover
+{
+  text-shadow: 0 0 1vh var(--f2);
+  box-shadow: 0 0 1vh var(--f2), 0 0 3vh var(--f2) inset;
+  padding: 1.25vh 1.5vh;
+  transform: rotateX(10deg) translateZ(1vh);
+}
+
+/* inputs */
+
+.intxt
+{
+  background-image: linear-gradient(var(--b2), var(--f2));
+  box-shadow: 0 0.2vh 1vh #00000050, 0 0 3vh var(--b3) inset;
+  color: var(--f3);
+  font-size: 2.25vh;
+  height: 3vh;
+  padding: 1vh 2vh;
+  border-radius: 1vh 0;
+  text-align: center;
+  margin: 1vh;
+}
+.intxt:hover
+{
+  text-shadow: 0 0 1vh var(--f2);
+  box-shadow: 0 0 1vh var(--f2), 0 0 3vh var(--f2) inset;
+  padding: 1.25vh 1.5vh;
+  transform: rotateX(10deg) translateZ(1vh);
+}
+

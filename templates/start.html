@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+
+<head>
+
+  <meta charset = 'UTF-8'>
+  <meta name = 'viewport' content = 'width = device-width, initial-scale = 1.0'>
+  <meta name = 'description' content = 'Gerador de Horários Mnemosyne'>
+
+  <title>Mnemosyne</title>
+
+  <link rel = 'icon' type = 'image/png' href = '{{url_for("static", filename="images/logo.png")}}'>
+
+  <link rel = 'stylesheet' href = '{{url_for("static", filename="styles/nav.css")}}'>
+  <link rel = 'stylesheet' href = '{{url_for("static", filename="styles/colors.css")}}'>
+  <link rel = 'stylesheet' href = '{{url_for("static", filename="styles/general.css")}}'>
+  <link rel = 'stylesheet' href = '{{url_for("static", filename="styles/start.css")}}'>
+
+</head>
+
+<body>
+
+  <div class = 'navbar row jus_x cen_y'>
+
+    <div class = 'navctt row cen_y'>
+      <img src = '{{url_for("static", filename="images/logo.png")}}' class = 'navimg navel'>
+      <p class = 'navtitle navel'> MNEMOSYNE </p>
+    </div>
+
+    <div class = 'navctt row cen_y'>
+      <a href='/start' class = 'navbt navel'> Start </a>
+      <a href='/gen/form' class = 'navbt navel'> Generate </a>
+    </div>
+
+  </div>
+
+  <div class = 'navspace'></div>
+
+  <div class = 'box col'>
+    <h1 class = 'title boxtitle'>
+      Welcome!
+    </h1>
+    <p class = 'par boxpar'>
+      Mnemosyne is an open source school timetable generator API and web interface programmed in C++.
+    </p>
+    <p class = 'par boxpar'>
+      To generate a timetable, you must fill a form with the necessary data to build it and submit it.
+      Click on the button below to access the form.
+    </p>
+    <div class = 'space'></div>
+    <a href="/gen/form" class = 'bt'>
+      Generate a timetable
+    </a>
+  </div>
+  
+</body>
