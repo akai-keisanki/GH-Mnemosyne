@@ -8,10 +8,8 @@ import random
 class Mne:
 
     def __init__(self, name) -> None:
-
-        global app
         
-        app = flask.Flask(name)
+        this.app = flask.Flask(name)
         random.seed(int(time()))
 
         return
