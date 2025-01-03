@@ -9,7 +9,7 @@ class Mne:
 
     def __init__(self, name) -> None:
         
-        this.app = flask.Flask(name)
+        self.app = flask.Flask(name)
         random.seed(int(time()))
 
         return
