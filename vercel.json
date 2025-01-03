@@ -2,13 +2,10 @@
   "version": 2,
 
   "functions": {
-    "app.py": {
-      "runtime": "@vercel/python@3.9",
-      "maxDuration": 60
-    }
+    "app.py": { "runtime": "vercel-python@3.12", "maxDuration": 60 }
   },
 
   "routes": [
-    {"src": "/(.*)", "dest": "app.py"}
+    { "src": "/(.*)", "dest": "app.py" }
   ]
 }
