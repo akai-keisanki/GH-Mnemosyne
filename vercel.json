@@ -2,10 +2,16 @@
   "version": 2,
 
   "functions": {
-    "app.py": { "runtime": "python@3.12", "maxDuration": 60 }
+    "app.py": {
+      "runtime": "python",
+      "maxDuration": 60
+    }
   },
 
   "routes": [
-    { "src": "/(.*)", "dest": "app.py" }
+    {
+      "src": "/(.*)",
+      "dest": "app.py"
+    }
   ]
 }
