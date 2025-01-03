@@ -1,6 +1,8 @@
-import subprocess
+import os
 import time
+import subprocess
 
+EXEURL = os.path.join(os.path.dirname(__file__), '..', '..', 'bin', 'gen.exe')
 
 def gen_hors(clasn : int, days : int, horpd : int, profs : list[tuple[int, list[list[int]]]], seed : int = int(time.time()), genn : int = 128, popn : int = 150, mutp : int = 5) -> list[list[list[list[int]]]]:
 
@@ -18,7 +20,7 @@ def gen_hors(clasn : int, days : int, horpd : int, profs : list[tuple[int, list[
     in_dt += f' {seed} {genn} {popn} {mutp}'
 
     return eval(subprocess.run(
-        ["./bin/gen.exe"], input=in_dt,
+        [EXEURL], input=in_dt,
         text=True, capture_output=True
     ).stdout)
 
