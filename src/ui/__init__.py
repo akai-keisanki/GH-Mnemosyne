@@ -7,9 +7,9 @@ import random
 
 class Mne:
 
-    def __init__(self, name) -> None:
+    def __init__(self, app) -> None:
 
-        self.app = flask.Flask(name)
+        self.app = app
         random.seed(int(time()))
 
         return

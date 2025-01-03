@@ -1,10 +1,12 @@
 from src.ui import *
 
+global app
+
 if __name__ == '__main__':
 
-    global app
+    app = flask.Flask(__name__)
 
-    mne : Mne = Mne(__name__)
+    mne : Mne = Mne(app)
 
     app = Mne.app
 
