@@ -1,13 +1,11 @@
 {
   "version": 2,
-
   "functions": {
     "app.py": {
-      "runtime": "python@3.12",
+      "runtime": "python@3.9",
       "maxDuration": 60
     }
   },
-
   "routes": [
     {
       "src": "/(.*)",
