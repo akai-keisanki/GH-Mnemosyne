@@ -1,0 +1,62 @@
+/* Divisions */
+
+.navbar
+{
+	height: 10vh;
+	width: 100vw;
+	background-color: var(--b1);
+	box-shadow: 0 3vh 10vh var(--f1) inset;
+	position: fixed;
+	z-index: 100000;
+  border-bottom: solid 0.5vh var(--b2);
+}
+
+.navctt
+{
+	perspective: 20vh;
+}
+
+/* Elements */
+
+.navel
+{
+	margin: 1vh 2vh;
+}
+
+.navimg
+{
+	height: 7vh;
+	width: 7vh;
+}
+
+.navtitle
+{
+	color: var(--f3);
+	font-size: 3vh;
+}
+
+.navbt
+{
+	background-image: linear-gradient(var(--f2), var(--f1));
+  box-shadow: 0 0.2vh 1vh #00000050, 0 0 0 #00000000 inset;
+	color: var(--f3);
+	font-size: 2.25vh;
+	height: 3vh;
+	padding: 1vh 2vh;
+	border-radius: 1vh 0;
+	text-align: center;
+}
+.navbt:hover
+{
+	text-shadow: 0 0 1vh var(--f2);
+	box-shadow: 0 0 1vh var(--f2), 0 0 3vh var(--f2) inset;
+	padding: 1.25vh 1.5vh;
+	transform: rotateX(10deg) rotateY(5deg) translateZ(1vh);
+}
+
+/* Outside  */
+
+.navspace
+{
+	height: 20vh;
+}
