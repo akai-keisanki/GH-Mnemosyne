@@ -137,6 +137,6 @@ class Mne:
 
     def run(self) -> None:
 
-        self.app.run(debug = True)
+        self.app.run(debug = False)
 
         return
