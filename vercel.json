@@ -2,7 +2,7 @@
   "version": 2,
 
   "functions": {
-    "app.py": { "runtime": "vercel-python@3.12", "maxDuration": 60 }
+    "app.py": { "runtime": "python@3.10", "maxDuration": 60 }
   },
 
   "routes": [
