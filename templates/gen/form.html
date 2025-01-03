@@ -11,22 +11,63 @@
 
   <link rel = 'icon' type = 'image/png' href = '{{url_for("static", filename="images/logo.png")}}'>
 
+  <link rel = 'stylesheet' href = '{{url_for("static", filename="styles/nav.css")}}'>
+  <link rel = 'stylesheet' href = '{{url_for("static", filename="styles/colors.css")}}'>
   <link rel = 'stylesheet' href = '{{url_for("static", filename="styles/general.css")}}'>
   <link rel = 'stylesheet' href = '{{url_for("static", filename="styles/start.css")}}'>
 
 </head>
 
+<script src = '{{url_for("static", filename="scripts/form.js")}}' ></script>
+
 <body>
 
-  <div class = 'navbar'>
+  <div class = 'navbar row jus_x cen_y'>
 
-    <div class = 'navctt'>
-      <img src = '{{url_for("static", filename="images/logo.png")}}'>
+    <div class = 'navctt row cen_y'>
+      <img src = '{{url_for("static", filename="images/logo.png")}}' class = 'navimg navel'>
+      <p class = 'navtitle navel'> MNEMOSYNE </p>
     </div>
 
-    <div class = 'navctt'>
+    <div class = 'navctt row cen_y'>
+      <a href='/start' class = 'navbt navel'> Start </a>
+      <a href='/gen/form' class = 'navbt navel'> Generate </a>
     </div>
 
+  </div>
+
+  <div class = 'navspace'></div>
+
+  <div class = 'box col'>
+    <h1 class = 'title boxtitle'>
+      Generate A School Timetable
+    </h1>
+    <form method = 'GET' action = '/gen/up' enctype = 'application/json' class = 'col'>
+      <label class = 'par labpar' for = 'seed'> Seed (integer number): </label>
+      <input name = 'seed' type = 'number' value={{rand}} class = 'intxt' />
+      <label class = 'par labpar' for = 'classrooms'> Classrooms (comma separated): </label>
+      <input name = 'classrooms' type = 'text' class = 'intxt' />
+      <div class = 'row jus_x'>
+      <div class = 'col'>
+        <label class = 'par labpar' for = 'weekly working day amount'> Weekly working day amount (integer number): </label>
+        <input name = 'weekly working day amount' type = 'number' class = 'intxt' />
+      </div>
+      <div class = 'col'>
+        <label class = 'par labpar' for = 'schedules per day'> Schedules per day (integer number): </label>
+        <input name = 'schedules per day' type = 'number' class = 'intxt' />
+      </div>
+      </div>
+      <div class = 'col cen_y'>
+        <label class = 'par labpar' for = 'schedules per day'> Add a teacher: </label>
+        <div class = 'row jus_x'>
+          <input id = 'teacher' type = 'text' class = 'intxt houndred_x' />
+          <button type = 'button' class = 'bt' onclick = 'addt()'> Add </button>
+        </div>
+      </div>
+      <div class = 'box col' id = 'addteacher'>
+      </div>
+      <input type = 'submit' href="/gen/form" class = 'bt' />
+    </form>
   </div>
   
 </body>

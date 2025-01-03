@@ -2,7 +2,7 @@ import subprocess
 import time
 
 
-def gen_hors(clasn : int, days : int, horpd : int, profs : list[tuple[int, list[list[int]]]], seed : int = int(time.time()), genn : int = 128, popn : int = 100, mutp : int = 5) -> list[list[list[list[int]]]]:
+def gen_hors(clasn : int, days : int, horpd : int, profs : list[tuple[int, list[list[int]]]], seed : int = int(time.time()), genn : int = 128, popn : int = 150, mutp : int = 5) -> list[list[list[list[int]]]]:
 
     in_dt : str = f'{clasn} {days} {horpd} {len(profs)}'
     
