@@ -8,8 +8,6 @@ if __name__ == '__main__':
 
     mne : Mne = Mne(app)
 
-    app = Mne.app
-
     mne.setRoutes()
 
     mne.run()
