@@ -3,7 +3,7 @@
 
   "functions": {
     "app.py": {
-      "runtime": "python",
+      "runtime": "python@3.12",
       "maxDuration": 60
     }
   },
