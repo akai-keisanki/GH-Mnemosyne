@@ -46,6 +46,7 @@ class Mne:
             dt['teachers'] = dict()
 
             seed = dt['seed']
+            genn = dt['gens']
             dt.pop('seed')
 
             for k in dt.copy():
@@ -69,7 +70,7 @@ class Mne:
 
             dt['weekly working day amount'] = int(dt['weekly working day amount'])
             dt['schedules per day'] = int(dt['schedules per day'])
-            dt = requests.get(flask.url_for('gen_stt', _external=True), json = dt, params = {'seed': seed}).json()
+            dt = requests.get(flask.url_for('gen_stt', _external=True), json = dt, params = {'seed': seed, 'gens': genn}).json()
             return flask.render_template('gen/result.html', dt = dt)
 
         # Application Programming Interface

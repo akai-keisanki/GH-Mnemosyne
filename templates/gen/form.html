@@ -43,8 +43,16 @@
       Generate A School Timetable
     </h1>
     <form method = 'GET' action = '/gen/up' enctype = 'application/json' class = 'col'>
-      <label class = 'par labpar' for = 'seed'> Seed (integer number): </label>
-      <input name = 'seed' type = 'number' value={{rand}} class = 'intxt' />
+      <div class = 'row jus_x'>
+      <div class = 'col'>
+        <label class = 'par labpar' for = 'seed'> Seed (integer number): </label>
+        <input name = 'seed' type = 'number' value={{rand}} class = 'intxt' />
+      </div>
+      <div class = 'col'>
+        <label class = 'par labpar' for = 'gens'> Generation amount (integer number): </label>
+        <input name = 'gens' type = 'number' value=128 class = 'intxt' />
+      </div>
+      </div>
       <label class = 'par labpar' for = 'classrooms'> Classrooms (comma separated): </label>
       <input name = 'classrooms' type = 'text' class = 'intxt' />
       <div class = 'row jus_x'>
