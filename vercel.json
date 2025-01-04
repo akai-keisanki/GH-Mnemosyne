@@ -2,7 +2,6 @@
   "version": 2,
   "functions": {
     "app.py": {
-      "runtime": "python3.12",
       "maxDuration": 60
     }
   },
