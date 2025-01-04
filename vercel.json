@@ -2,11 +2,11 @@
 {
   "version": 2,
   "functions": {
-    "functions/index.py": {
+    "api/index.py": {
       "maxDuration": 60
     }
   },
   "routes": [
-    { "src": "/(.*)", "dest": "functions/index.py" }
+    { "src": "/(.*)", "dest": "api/index.py" }
   ]
 }
