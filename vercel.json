@@ -1,7 +1,7 @@
 {
   "version": 2,
   "functions": {
-    "index.py": {
+    "api/index.py": {
       "maxDuration": 60
     }
   },
