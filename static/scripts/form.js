@@ -1,5 +1,3 @@
-
-
 function addt()
 {
 	let addteacher = document.getElementById('addteacher');

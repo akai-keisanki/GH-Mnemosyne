@@ -32,6 +32,30 @@ class Mne:
 
             return flask.render_template('start.html')
 
+        @self.app.route('/doc/begin')
+        def doc_begin():
+            """
+            About/learn/doc beginning page.
+            """
+
+            return flask.render_template('doc/begin.html')
+
+        @self.app.route('/doc/form')
+        def doc_form():
+            """
+            About the form.
+            """
+
+            return flask.render_template('doc/form.html')
+
+        @self.app.route('/doc/api')
+        def doc_api():
+            """
+            About the API.
+            """
+
+            return flask.render_template('doc/api.html')
+
         @self.app.route('/gen/form')
         def gen_form():
             """

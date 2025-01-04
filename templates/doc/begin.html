@@ -7,7 +7,7 @@
   <meta name = 'viewport' content = 'width = device-width, initial-scale = 1.0'>
   <meta name = 'description' content = 'Gerador de Horários Mnemosyne'>
 
-  <title>Mnemosyne</title>
+  <title>Mnemosyne - About</title>
 
   <link rel = 'icon' type = 'image/png' href = '{{url_for("static", filename="images/logo.png")}}'>
 
@@ -39,18 +39,39 @@
 
   <div class = 'box col'>
     <h1 class = 'title boxtitle'>
-      Welcome!
+      About the algorithm
     </h1>
     <p class = 'par boxpar'>
-      Mnemosyne is an open source school timetable generator API and web interface programmed in C++.
+      The timetable generation algorithm is a C++ open source genetic algorithm that generates unformatted timetables.
+      The tables are fetched, organized and formatted by the python modules used by the API, which is used when a form information about the timetable is submitted.
     </p>
+  </div>
+
+  <div class = 'box col'>
+    <h1 class = 'title boxtitle'>
+      About the form
+    </h1>
     <p class = 'par boxpar'>
-      To generate a timetable, you must fill a form with the necessary data to build it and submit it.
-      Click on the button below to access the form.
+      The form is the easiest way to generate school timetables with Mnemosyne.
+      Its graphical interface organizes visually the data to be sent to the API.
     </p>
     <div class = 'space'></div>
-    <a href="/gen/form" class = 'bt'>
-      Generate a timetable
+    <a href="/doc/form" class = 'bt'>
+      See details
+    </a>
+  </div>
+
+  <div class = 'box col'>
+    <h1 class = 'title boxtitle'>
+      About the API
+    </h1>
+    <p class = 'par boxpar'>
+      The API is a flexible way to use Mnemosyne's algorithm in other applications, by sending a JSON with the data of the timetable.
+      The result is given by a JSON.
+    </p>
+    <div class = 'space'></div>
+    <a href="/doc/api" class = 'bt'>
+      See details
     </a>
   </div>
   
