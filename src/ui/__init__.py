@@ -9,7 +9,7 @@ class Mne:
 
     def __init__(self, name) -> None:
         
-        self.app = flask.Flask(name)
+        self.app = flask.Flask(name, template_folder='templates')
         random.seed(int(time()))
 
         return
