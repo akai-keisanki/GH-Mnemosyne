@@ -14,7 +14,6 @@ html
   padding: 1vh 3vh;
   margin: 5vh 10vh;
   box-shadow: 0 3vh 15vh var(--f1) inset, 0 1vh 10vh var(--b3);
-  perspective: 100vh;
 }
 
 .space
@@ -22,6 +21,17 @@ html
   height: 2vh;
   width: 2vw;
 }
+
+.quote
+{
+  font-family: consolas, monospace;
+  font-size: 2.5vh;
+  background-color: #CCCCCC88;
+  padding: 0.33vh 0.66vh;
+  border-radius: 1vh;
+}
+
+/* Cells */
 
 .cell
 {
@@ -104,7 +114,7 @@ html
   text-shadow: 0 0 1vh var(--f2);
   box-shadow: 0 0 1vh var(--f2), 0 0 3vh var(--f2) inset;
   padding: 1.25vh 1.5vh;
-  transform: rotateX(10deg) translateZ(1vh);
+  transform: rotateX(7deg) translateZ(1vh);
 }
 
 /* inputs */
@@ -126,6 +136,6 @@ html
   text-shadow: 0 0 1vh var(--f2);
   box-shadow: 0 0 1vh var(--f2), 0 0 3vh var(--f2) inset;
   padding: 1.25vh 1.5vh;
-  transform: rotateX(10deg) translateZ(1vh);
+  transform: rotateX(7deg) translateZ(1vh);
 }
 

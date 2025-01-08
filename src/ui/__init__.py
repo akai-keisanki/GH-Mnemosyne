@@ -32,6 +32,30 @@ class Mne:
 
             return flask.render_template('start.html')
 
+        @self.app.route('/doc/begin')
+        def doc_begin():
+            """
+            About/learn/doc beginning page.
+            """
+
+            return flask.render_template('doc/begin.html')
+
+        @self.app.route('/doc/form')
+        def doc_form():
+            """
+            About the form.
+            """
+
+            return flask.render_template('doc/form.html')
+
+        @self.app.route('/doc/api')
+        def doc_api():
+            """
+            About the API.
+            """
+
+            return flask.render_template('doc/api.html')
+
         @self.app.route('/gen/form')
         def gen_form():
             """
@@ -46,6 +70,7 @@ class Mne:
             dt['teachers'] = dict()
 
             seed = dt['seed']
+            genn = dt['gens']
             dt.pop('seed')
 
             for k in dt.copy():
@@ -69,7 +94,7 @@ class Mne:
 
             dt['weekly working day amount'] = int(dt['weekly working day amount'])
             dt['schedules per day'] = int(dt['schedules per day'])
-            dt = requests.get(flask.url_for('gen_stt', _external=True), json = dt, params = {'seed': seed}).json()
+            dt = requests.get(flask.url_for('gen_stt', _external=True), json = dt, params = {'seed': seed, 'gens': genn}).json()
             return flask.render_template('gen/result.html', dt = dt)
 
         # Application Programming Interface
@@ -136,8 +161,8 @@ class Mne:
         return
 
 
-    def run(self) -> None:
+    def run(self, debug = False) -> None:
 
-        self.app.run(debug = False)
+        self.app.run(debug = debug)
 
         return
