@@ -50,14 +50,55 @@
     <p class = 'par quote'>
               { "classrooms": [string], "weekly working day amount": unsigned integer, "schedules per day": unsigned integer, "teachers": { "&ltteacher&gt": { "schedules per week": unsigned integer, "subjects": { "&ltclassroom&gt": [string], ... } }, ... } }
     </p>
+    <p class = 'par boxpar'>
+      Check <a href = '/doc/form' class = 'bt'>more about the form</a> for the information about the meaning of each field.
+      This page will only explain how to format the data.
+    </p>
   </div>
 
   <div class = 'box col'>
     <h1 class = 'title boxtitle'>
-      WIP
+      The parameters
     </h1>
     <p class = 'par boxpar'>
-      This is a Work In Progress page. The text is still not finished
+    The <span class = 'quote'>seed</span> and <span class = 'quote'>gens</span> parameters take integer numbers, signed to <span class = 'quote'>seed</span> and unsigned to <span class = 'quote'>gens</span>.
+    They are included in the URL. (E. g. <span class = 'quote'>https://mnemosyne-seven.vercel.app/gen/stt?seed=72&gens=200</span>)
+    </p>
+    <p class = 'par boxpar'>
+      If a parameter is not given, default values will be used: a random value to <span class = 'quote'>seed</span> and <span class = 'quote'>128</span> to <span class = 'quote'>gens</span>.
+    </p>
+  </div>
+
+  <div class = 'box col'>
+    <h1 class = 'title boxtitle'>
+      The first components
+    </h1>
+    <p class = 'par boxpar'>
+      The first three objects of the JSON are:
+    </p>
+    <p class = 'par boxpar'>
+      <span class = 'quote'>classrooms</span>: a list of strings, the names of the classrooms.
+    </p>
+    <p class = 'par boxpar'>
+      <span class = 'quote'>weekly working day amount</span>: an unsigned integer.
+    </p>
+    <p class = 'par boxpar'>
+      <span class = 'quote'>schedules per day</span>: an unsigned integer.
+    </p>
+  </div>
+
+  <div class = 'box col'>
+    <h1 class = 'title boxtitle'>
+      Teachers
+    </h1>
+    <p class = 'par boxpar'>
+      The <span class = 'quote'>teachers</span> object contains more objects that represent each teacher whose key is the teacher's name and that contains more objects with keys:
+    </p>
+    <p class = 'par boxpar'>
+      <span class = 'quote'>schedules per week</span>: an unsigned integer.
+    </p>
+    <p class = 'par boxpar'>
+      <span class = 'quote'>subjects</span>: an object that contains more objects with keys: the keys are the classroom's name for each classroom and the values are lists of strings that represent the subjects that the teacher teaches for that classroom or an empty list for when no subjects are teached by the teacher for that classroom.
     </p>
   </div>
 
