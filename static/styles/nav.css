@@ -13,7 +13,6 @@
 
 .navctt
 {
-	perspective: 20vh;
 }
 
 /* Elements */
@@ -51,7 +50,7 @@
 	text-shadow: 0 0 1vh var(--f2);
 	box-shadow: 0 0 1vh var(--f2), 0 0 3vh var(--f2) inset;
 	padding: 1.25vh 1.5vh;
-	transform: rotateX(10deg) rotateY(5deg) translateZ(1vh);
+	transform: rotateX(7deg) translateZ(1vh);
 }
 
 /* Outside  */

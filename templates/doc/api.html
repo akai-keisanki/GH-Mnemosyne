@@ -42,7 +42,22 @@
       The basics
     </h1>
     <p class = 'par boxpar'>
-      ...
+      The school timetable generation API URL is <span class = 'quote'>https://mnemosyne-seven.vercel.app/gen/stt</span>, with two opitional parameters: <span class = 'quote'>seed</span> and <span class = 'quote'>gens</span>.
+    </p>
+    <p class = 'par boxpar'>
+      The API is accessed by a <span class = 'quote'>GET</span> method, that requires a JSON. Check the structure below. Its components will be explained further in this page.
+    </p>
+    <p class = 'par quote'>
+              { "classrooms": [string], "weekly working day amount": unsigned integer, "schedules per day": unsigned integer, "teachers": { "&ltteacher&gt": { "schedules per week": unsigned integer, "subjects": { "&ltclassroom&gt": [string], ... } }, ... } }
+    </p>
+  </div>
+
+  <div class = 'box col'>
+    <h1 class = 'title boxtitle'>
+      WIP
+    </h1>
+    <p class = 'par boxpar'>
+      This is a Work In Progress page. The text is still not finished
     </p>
   </div>
 

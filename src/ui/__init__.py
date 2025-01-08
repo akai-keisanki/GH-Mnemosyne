@@ -161,8 +161,8 @@ class Mne:
         return
 
 
-    def run(self) -> None:
+    def run(self, debug = False) -> None:
 
-        self.app.run(debug = False)
+        self.app.run(debug = debug)
 
         return

@@ -42,8 +42,104 @@
       The basics
     </h1>
     <p class = 'par boxpar'>
-      ...
+      The form only requests the information needed to generate a timetable.
+    </p>
+    <p class = 'par boxpar'>
+      The data must be properly formatted and organized in each field.
+      Mistypes may lead to unexpected behavior.
+    </p>
+    <p class = 'par boxpar'>
+      The boxes below explain each field.
     </p>
   </div>
   
+  <div class = 'box col'>
+    <h1 class = 'title boxtitle'>
+      The seed and the generation amount
+    </h1>
+    <p class = 'par boxpar'>
+      Seeds are (optionally) random numbers that lead to different results with the same data.
+    </p>
+    <p class = 'par boxpar'>
+      The seed field must be filled with an integer number (with no decimals).
+    </p>
+    <p class = 'par boxpar'>
+      In genetic algorithms, the amount of generations is mostly related to the quality of the result.
+      More generations lead to better results because the best are selected in each generation.
+    </p>
+    <p class = 'par boxpar'>
+      The generation amount field must be filled with a positive integer number (a count).
+    </p>
+  </div>
+
+  <div class = 'box col'>
+    <h1 class = 'title boxtitle'>
+      The classrooms
+    </h1>
+    <p class = 'par boxpar'>
+      "Classrooms" refer to the classrooms' names. (E. g. 1A, 1B, 1C, 2A, 2B, 2C, et c.)
+    </p>
+    <p class = 'par boxpar'>
+      The classrooms field must be filled with the classrooms' names separated by commas (E. g. <span class = 'quote'>1A, 1B, 1C, 2A, 2B, 2C, 3A, 3B, 3C</span>).
+    </p>
+  </div>
+
+  <div class = 'box col'>
+    <h1 class = 'title boxtitle'>
+      The weekly working day amount and the schedules per day
+    </h1>
+    <p class = 'par boxpar'>
+      In a school timetable, the weekly working day amount is the count of how many days of the week are included.
+    </p>
+    <p class = 'par boxpar'>
+      The amount of schedules per day is the number of divisions of a day that can be of a different subject.
+    </p>
+    <p class = 'par boxpar'>
+      The weekly working day amount field and the schedules per day field must be filled with positive integer numbers (a count).
+    </p>
+  </div>
+
+  <div class = 'box col'>
+    <h1 class = 'title boxtitle'>
+      Adding teachers
+    </h1>
+    <p class = 'par boxpar'>
+      Each teacher has an ideal amount of schedules per week and a list of subjects to teach.
+    </p>
+    <p class = 'par boxpar'>
+      To a teacher, write their name on the "Add a teacher field" and click on the "Add" button.
+      A section with new fields for that teacher will appear after that.
+    </p>
+    <p class = 'par boxpar'>
+      Each teacher must be added individually.
+    </p>
+    <p class = 'par boxpar'>
+      The schedules per week field must be filled with a positive integer which is the ideal count of schedules for that teacher to work in a week.
+    </p>
+    <p class = 'par boxpar'>
+    The subjects field must be filled with a list of subjects separated by commas where which subject must contain the class where it is going to be teached (typed exactly as in the classrooms field) and the subject's name separated by a minus (<span class = 'quote'>-</span>) character. (E. g. <span class = 'quote'>1A - Math, 1C - Geometry, 1C - Math, 3B - Pre-Calculus, 2A - Linear Algebra</span>)
+    </p>
+  </div>
+
+  <div class = 'box col'>
+    <h1 class = 'title boxtitle'>
+      WIP
+    </h1>
+    <p class = 'par boxpar'>
+      This is a Work In Progress page. The text is still not finished
+    </p>
+  </div>
+
+  <div class = 'box col'>
+    <h1 class = 'title boxtitle'>
+      Submitting the form
+    </h1>
+    <p class = 'par boxpar'>
+      After filling the fields with the correct information with no mistypes, click on the "Submit Query" button.
+      The API will be called and the algorithm will take a few seconds. If a <span class = 'quote'>504 - Timeout</span> error is triggered, it means that the generation took more than 60 seconds to work. Try lowering the generation amount. It may lead to worse results, but it can also fix the error.
+    </p>
+  </div>
+  
+  
+
 </body>
