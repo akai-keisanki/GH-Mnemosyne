@@ -1,5 +1,5 @@
 <h1 align='center'>
-<img src="https://raw.githubusercontent.com/Science52101/Mnemosyne/refs/heads/doc/doc/img/MNEMOSYNE_logo.png" alt="MNEMOSYNE logo" width="128" heigth="128"/> <br>
+<img src="https://github.com/akai-keisanki/GH-Mnemosyne/blob/All/docs/img/MNEMOSYNE_logo.png?raw=true" alt="MNEMOSYNE logo" width="128" heigth="128"/> <br>
 Gerador de Horários Mnemosyne
 </h1>
 
